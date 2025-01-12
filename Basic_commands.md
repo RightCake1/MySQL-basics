@@ -13,10 +13,21 @@
 - `asc` = ascending, `desc` = descending.
 - `alter` to change a table that is already created.
 - `boolean` = true/false (1 = true, 0 = false).
+
+## Additional Commands
 - `update` to modify existing records in a table.
+```bash
+update table_name set column1 = value1, column2 = value2 where condition;
+```
 - `delete` to remove records from a table.
+```bash
+delete from table_name where condition;
+```
 - `drop table` to delete a table.
+```bash
+drop table table_name;
+```
 - `drop database` to delete a database.
-- `create index` to create an index (search key).
-- `grant` to give user access privileges to the database.
-- `revoke` to remove user access privileges.
+```bash
+drop database db_name;
+```
