@@ -15,8 +15,7 @@
 - `boolean` = true/false (1 = true, 0 = false).
 - `ctrl+l` = clear screen
 - `now())` = for current date and time 
-- ('Fred', 'Smith', 'fred@gmail.com', '123456', 'New York', 'design', 0, now()), ('Sara', 'Watson', 'sara@gmail.com', '123456', 'New York', 'design', 0, now()),('Will', 'Jackson', 'will@yahoo.com', '123456', 'Rhode Island', 'development', 1, now()),('Paula', 'Johnson', 'paula@yahoo.com', '123456', 'Massachusetts', 'sales', 0, now()),('Tom', 'Spears', 'tom@yahoo.com', '123456', 'Massachusetts', 'sales', 0, now());
-Select 
+
 ## Additional Commands
 - `update` to modify existing records in a table.
 ```bash
