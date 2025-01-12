@@ -1,3 +1,19 @@
+## Make a Database
+```sql
+show databases;
+create database db_name;
+use db_name;
+```
+
+## Make a Table in the Database
+```sql
+show tables;
+create table table_name (
+    id int,
+    name varchar(299),
+    age int
+);
+```
 # Inserting data in the table 
 ```bash
 show tables;

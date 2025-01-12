@@ -4,23 +4,21 @@
 ```bash
 sudo mysql # start MySQL
 ```
-
-## Make a Database
-```sql
-show databases;
-create database db_name;
-use db_name;
+## Create user 
+```bash
+CREATE USER 'someuser'@'localhost' IDENTIFIED BY 'somepassword';
 ```
+## Show all users
+```bash
+SHOW GRANTS FOR 'someuser'@'localhost';
+``` 
+## Grant permissions
+GRANT ALL PRIVILEGES ON * . * TO 'someuser'@'localhost';
+FLUSH PRIVILEGES;
 
-## Make a Table in the Database
-```sql
-show tables;
-create table table_name (
-    id int,
-    name varchar(299),
-    age int
-);
-show tables;
-describe table_name;
-insert into table_name values (1, "name", 25);
-```
+# Delete user
+```bash
+DROP USER 'someuser'@'localhost';
+``` 
+
+
