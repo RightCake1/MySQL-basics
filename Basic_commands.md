@@ -1,0 +1,22 @@
+# SQL Basic commands
+- Use `;` after completed commands.
+- Use `,` when continuing or adding more.
+- Use `()` for parentheses, e.g., adding rows, columns, and numbers.
+- `int` - integer.
+- `varchar` - variable character or strings.
+- `describe` to show details about tables.
+- Defining the table with columns and rows is defining the schema or how our database is arranged.
+- Write strings in `""`.
+- `insert into` inserts data into the specified table.
+- `select` pulls data from tables.
+- Use `*` wildcard to pull everything from the table.
+- `asc` = ascending, `desc` = descending.
+- `alter` to change a table that is already created.
+- `boolean` = true/false (1 = true, 0 = false).
+- `update` to modify existing records in a table.
+- `delete` to remove records from a table.
+- `drop table` to delete a table.
+- `drop database` to delete a database.
+- `create index` to create an index (search key).
+- `grant` to give user access privileges to the database.
+- `revoke` to remove user access privileges.
