@@ -17,5 +17,5 @@ To get started with MySQL, follow these steps:
 
 To help practice, I have provided two files with exercises and examples:
 
-- [Practice File 1](./practice_file_1.sql)
-- [Practice File 2](./practice_file_2.sql)
+- [Practice File 1](./Practice_BASIC.md)
+- [Practice File 2](./Practice2_Proteins.md)
