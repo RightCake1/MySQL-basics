@@ -69,6 +69,11 @@ alter table table_name add new_column boolean;
 ALTER TABLE users MODIFY COLUMN age INT(3);
 ```
 
+```sql
+ALTER TABLE "table name"
+CHANGE COLUMN "oldColumn" "newcolumnName" VARCHAR(255);
+```
+
 ## Deleting Data
 ```sql
 delete from table_name where condition;
@@ -84,3 +89,16 @@ drop database db_name;
 ```sql
 SELECT CONCAT(first_name, ' ', last_name) AS 'Name', dept FROM users;
 ```
+
+# Indexing
+```bash
+CREATE INDEX LIndex On users(location);
+DROP INDEX LIndex ON users;
+```
+
+# Linking tables
+```bash
+ PRIMARY KEY(id),
+   FOREIGN KEY (user_id) REFERENCES users(id)
+```
+
