@@ -1,5 +1,9 @@
 # Creating the Proteins Table
 
+## SQL Statements for Proteins Table
+
+### Creating the Proteins Table
+
 ```sql
 CREATE TABLE Proteins (
     UniProtID varchar(15) PRIMARY KEY,
@@ -10,7 +14,7 @@ CREATE TABLE Proteins (
 );
 ```
 
-# Inserting Data into the Proteins Table
+### Inserting Data into the Proteins Table
 
 ```sql
 INSERT INTO Proteins (UniProtID, ProteinName, ProteinSequence, ExternalPDBID, ExternalPubMedID) 
@@ -27,31 +31,31 @@ VALUES
 ('P12355', 'Lambda Protein', 'MAVIKLRETVLVRAET', '11BCD', 10234567);
 ```
 
-# Selecting All Data from the Proteins Table
+### Selecting All Data from the Proteins Table
 
 ```sql
 SELECT * FROM Proteins;
 ```
 
-# Creating an Index on ProteinName
+### Creating an Index on ProteinName
 
 ```sql
 CREATE INDEX idx_protein_name ON Proteins (ProteinName);
 ```
 
-# Showing Indexes from the Proteins Table
+### Showing Indexes from the Proteins Table
 
 ```sql
 SHOW INDEX FROM Proteins;
 ```
 
-# Altering the Proteins Table to Add GeneName Column
+### Altering the Proteins Table to Add GeneName Column
 
 ```sql
 ALTER TABLE Proteins ADD COLUMN GeneName varchar(299);
 ```
 
-# Updating GeneName for Multiple Records
+### Updating GeneName for Multiple Records
 
 ```sql
 UPDATE Proteins 
@@ -70,13 +74,15 @@ END
 WHERE UniProtID IN ('P12346', 'P12347', 'P12348', 'P12349', 'P12350', 'P12351', 'P12352', 'P12353', 'P12354', 'P12355');
 ```
 
-# Updating GeneName for a Single Record
+### Updating GeneName for a Single Record
 
 ```sql
 UPDATE Proteins SET GeneName = 'GeneOne' WHERE UniProtID = 'P123';
 ```
 
-# Creating the Diseases Table with Foreign Key
+## SQL Statements for Diseases Table
+
+### Creating the Diseases Table with Foreign Key
 
 ```sql
 CREATE TABLE Diseases(
@@ -87,23 +93,192 @@ CREATE TABLE Diseases(
 );
 ```
 
-# Joining Tables Proteins and Diseases
+### Joining Tables Proteins and Diseases
 
 ```sql
 SELECT * FROM Proteins
     JOIN Diseases ON Proteins.UniProtID = Diseases.UniProtID;
 ```
 
-# Sample Queries
+## Sample Queries
+
+### Basic Queries
+
+#### Select UniProtID and ProteinName
 
 ```sql
-Select UniProtID, ProteinName From Proteins Where ExternalPubMedID > 500000;
+SELECT UniProtID, ProteinName FROM Proteins WHERE ExternalPubMedID > 500000;
 ```
 
-```sql
-Select * from Proteins Order by ProteinName ASC;
-```
+#### Select All Proteins Ordered by ProteinName
 
 ```sql
-Select Count(*) From Proteins Where ExternalPubMedID > 500000;
+SELECT * FROM Proteins ORDER BY ProteinName ASC;
+```
+
+#### Count Proteins with ExternalPubMedID Greater than 500000
+
+```sql
+SELECT COUNT(*) FROM Proteins WHERE ExternalPubMedID > 500000;
+```
+
+#### Find Proteins with Sequence Length Greater than 15
+
+```sql
+SELECT UniProtID, ProteinName, LENGTH(ProteinSequence) AS SequenceLength 
+FROM Proteins 
+WHERE LENGTH(ProteinSequence) > 15;
+```
+
+#### List Diseases Associated with Proteins with ExternalPubMedID Greater than 7000000
+
+```sql
+SELECT Diseases.DiseaseName, Proteins.ProteinName 
+FROM Diseases 
+JOIN Proteins ON Diseases.UniProtID = Proteins.UniProtID 
+WHERE Proteins.ExternalPubMedID > 7000000;
+```
+
+#### Retrieve All Proteins Ordered by GeneName Descending
+
+```sql
+SELECT UniProtID, ProteinName, GeneName 
+FROM Proteins 
+ORDER BY GeneName DESC;
+```
+
+#### Count Unique ProteinName Entries
+
+```sql
+SELECT COUNT(DISTINCT ProteinName) AS UniqueProteins 
+FROM Proteins;
+```
+
+#### Fetch Proteins with ProteinName Containing "Kinase"
+
+```sql
+SELECT * 
+FROM Proteins 
+WHERE ProteinName LIKE '%Kinase%';
+```
+
+#### Find Protein with Longest Sequence
+
+```sql
+SELECT UniProtID, ProteinName, LENGTH(ProteinSequence) AS SequenceLength 
+FROM Proteins 
+ORDER BY LENGTH(ProteinSequence) DESC 
+LIMIT 1;
+```
+
+#### List Proteins without Associated GeneName
+
+```sql
+SELECT UniProtID, ProteinName 
+FROM Proteins 
+WHERE GeneName IS NULL;
+```
+
+#### Retrieve Top 5 Proteins with Smallest ExternalPubMedID
+
+```sql
+SELECT UniProtID, ProteinName, ExternalPubMedID 
+FROM Proteins 
+ORDER BY ExternalPubMedID ASC 
+LIMIT 5;
+```
+
+#### Find Diseases Not Associated with Any Protein
+
+```sql
+SELECT * 
+FROM Diseases 
+WHERE UniProtID IS NULL;
+```
+
+#### Calculate Average ExternalPubMedID for All Proteins
+
+```sql
+SELECT AVG(ExternalPubMedID) AS AveragePubMedID 
+FROM Proteins;
+```
+
+### Intermediate Queries
+
+#### Retrieve Diseases Linked to Proteins with ExternalPubMedID Greater than 7,000,000
+
+```sql
+SELECT Diseases.DiseaseName, Proteins.ProteinName
+FROM Diseases
+JOIN Proteins ON Diseases.UniProtID = Proteins.UniProtID
+WHERE Proteins.ExternalPubMedID > 7000000;
+```
+
+#### Find the Longest Protein Sequence and Its Associated Disease
+
+```sql
+SELECT Proteins.ProteinName, Diseases.DiseaseName, LENGTH(Proteins.ProteinSequence) AS SequenceLength
+FROM Proteins
+LEFT JOIN Diseases ON Proteins.UniProtID = Diseases.UniProtID
+ORDER BY SequenceLength DESC
+LIMIT 1;
+```
+
+#### List Diseases That Involve Proteins with Names Containing "Enzyme"
+
+```sql
+SELECT Diseases.DiseaseName, Proteins.ProteinName
+FROM Diseases
+JOIN Proteins ON Diseases.UniProtID = Proteins.UniProtID
+WHERE Proteins.ProteinName LIKE '%Enzyme%';
+```
+
+### Advanced Queries
+
+#### Find the Top 3 Proteins with the Most Associated Diseases
+
+```sql
+SELECT Proteins.ProteinName, COUNT(Diseases.DiseaseID) AS DiseaseCount
+FROM Proteins
+JOIN Diseases ON Proteins.UniProtID = Diseases.UniProtID
+GROUP BY Proteins.ProteinName
+ORDER BY DiseaseCount DESC
+LIMIT 3;
+```
+
+#### Retrieve All Diseases and Proteins Where the Gene Name Starts with "B"
+
+```sql
+SELECT Proteins.ProteinName, Diseases.DiseaseName
+FROM Proteins
+JOIN Diseases ON Proteins.UniProtID = Diseases.UniProtID
+WHERE Proteins.GeneName LIKE 'B%';
+```
+
+#### Find Proteins Linked to Diseases with the Word "Cancer" in Their Name
+
+```sql
+SELECT Proteins.ProteinName, Diseases.DiseaseName
+FROM Proteins
+JOIN Diseases ON Proteins.UniProtID = Diseases.UniProtID
+WHERE Diseases.DiseaseName LIKE '%Cancer%';
+```
+
+### Aggregation and Analysis
+
+#### Calculate the Average Sequence Length of Proteins Associated with Diseases
+
+```sql
+SELECT AVG(LENGTH(ProteinSequence)) AS AvgSequenceLength
+FROM Proteins
+WHERE UniProtID IN (SELECT UniProtID FROM Diseases);
+```
+
+#### Find Diseases with More Than One Associated Protein
+
+```sql
+SELECT DiseaseName, COUNT(UniProtID) AS ProteinCount
+FROM Diseases
+GROUP BY DiseaseName
+HAVING ProteinCount > 1;
 ```
