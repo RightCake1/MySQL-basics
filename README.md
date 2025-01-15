@@ -19,3 +19,4 @@ To help practice, I have provided two files with exercises and examples:
 
 - [Practice File 1](./Practice_BASIC.md)
 - [Practice File 2](./Practice2_Proteins.md)
+- [Practice FIle 3](./Practice_Bacteria.md) 
