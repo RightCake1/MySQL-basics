@@ -1,6 +1,8 @@
-# Creating the Proteins Table
 
-## SQL Statements for Proteins Table
+### Creating the Database
+```
+Create Database Biodata;
+```
 
 ### Creating the Proteins Table
 
