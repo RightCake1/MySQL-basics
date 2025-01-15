@@ -95,6 +95,21 @@ CREATE TABLE Diseases(
 );
 ```
 
+```sql
+INSERT INTO Diseases (DiseaseID, DiseaseNAME, UniProtID)
+VALUES
+    (1, 'Anemia', 'P12346'),
+    (2, 'Breast Cancer', 'P12347'),
+    (3, 'Lung Cancer', 'P12348'),
+    (4, 'Leukemia', 'P12349'),
+    (5, 'Cystic Fibrosis', 'P12350'),
+    (6, 'Lung Cancer', 'P12351'),
+    (7, 'Sickle Cell Anemia', 'P12352'),
+    (8, 'Pancreatic Cancer', 'P12353'),
+    (9, 'Alzheimer Disease', 'P12354'),
+    (10, 'Melanoma', 'P12355');
+```
+
 ### Joining Tables Proteins and Diseases
 
 ```sql

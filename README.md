@@ -10,7 +10,7 @@ This tutorial covered the basics of installing MySQL and performing simple opera
 To get started with MySQL, follow these steps:
 
 1. **Installation**: Instructions in the [MySQL Installation Guide](./Installation.md) to set up MySQL on your system.
-2. **Basic Commands**: Details are in the [Basic Commands Guide](./basic_commands.md). Refer to the section below for a list of basic commands to use MySQL.
+2. **Basic Commands**: Details are in the [Basic Commands Guide](./Basic_commands.md). Refer to the section below for a list of basic commands to use MySQL.
 3. **Basic Tutorial**: Follow the [Basic Tutorial](./Basic_tutorial_to_SQL.md) for a understandin how to using MySQL use most basic commands.
 
 ## Practice Files
