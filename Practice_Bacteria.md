@@ -208,5 +208,6 @@ insert into Plasmid (bacteria_id, plasmid_name, plasmid_size, plasmid_copy_numbe
 insert into Plasmid (bacteria_id, plasmid_name, plasmid_size, plasmid_copy_number) values (8, 'pCD630', 1542, 'medium');
 insert into Plasmid (bacteria_id, plasmid_name, plasmid_size, plasmid_copy_number) values (9, 'pFA1090', 3215, 'low');
 
+```sql
 select * from Plasmid;
-
+```
