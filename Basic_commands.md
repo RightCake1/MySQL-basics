@@ -20,3 +20,5 @@
 - Use `like` for text or specific finding.
 - Use `not like` for the opposite or exclude.
 - Use `IN` for specific finding in a column.
+- Use `%` for any number of characters. e.g., "a$" for after a, "$a" for before a, "$a$" for before and after a.
+- Use `_` for specifics. Can be combined with `$` like "_a$" means that one letter before a and anythign after a.
